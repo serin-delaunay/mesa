@@ -69,10 +69,11 @@ install:
 - set LLVM=%CD%\llvm
 
 build_script:
-- scons -j%NUMBER_OF_PROCESSORS% MSVC_VERSION=12.0 llvm=1
+- scons -j%NUMBER_OF_PROCESSORS% build=release MSVC_VERSION=12.0 llvm=1
 
 after_build:
-- scons -j%NUMBER_OF_PROCESSORS% MSVC_VERSION=12.0 llvm=1 check
+- scons -j%NUMBER_OF_PROCESSORS% build=release MSVC_VERSION=12.0 llvm=1 check
+- dir build\windows-x86-release /s
 
 
 # It's possible to setup notification here, as described in
