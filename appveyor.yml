@@ -33,10 +33,6 @@ branches:
 # - https://www.appveyor.com/blog/2014/06/04/shallow-clone-for-git-repositories
 clone_depth: 100
 
-cache:
-- win_flex_bison-2.5.9.zip
-- llvm-3.3.1-msvc2013-mtd.7z
-
 os: Visual Studio 2013
 
 environment:
@@ -69,11 +65,11 @@ install:
 - set LLVM=%CD%\llvm
 
 build_script:
-- scons -j%NUMBER_OF_PROCESSORS% MSVC_VERSION=12.0 llvm=1
+- scons -j%NUMBER_OF_PROCESSORS% build=release MSVC_VERSION=12.0 llvm=1
 
 after_build:
-- scons -j%NUMBER_OF_PROCESSORS% MSVC_VERSION=12.0 llvm=1 check
-- dir build\windows-x86-release /s
+- scons -j%NUMBER_OF_PROCESSORS% build=release MSVC_VERSION=12.0 llvm=1 check
+- dir build\windows-x86 /s
 
 
 # It's possible to setup notification here, as described in
